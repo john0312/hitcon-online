@@ -14,6 +14,7 @@ class Overlay {
     this.mainUI = mainUI;
     this.dom = dom;
     this.position = undefined;
+    this.toolbarButton = undefined;
   }
   
   /**
@@ -37,19 +38,21 @@ class Overlay {
     // Fail safe default.
     return true;
   }
-  
+
   /**
    * Unset ToolbarButton display=none.
    */
   showToolbarButton() {
-    // TODO(fanlan1210)
+    // WIP(fanlan1210)
+    this.toolbarButton.style.display = null;
   }
 
   /**
    * Set ToolbarButton display=none.
    */
   hideToolbarButton() {
-    // TODO(fanlan1210)
+    // WIP(fanlan1210)
+    this.toolbarButton.style.display = 'none';
   }
 
   /**
@@ -57,7 +60,9 @@ class Overlay {
    * when the button is clicked.
   */
   onClickToolbarButton() {
-    // TODO(fanlan1210)
+    // WIP(fanlan1210)
+    if (this.canHide() && this.position !== undefined) this.hide();
+    else this.show();
   }
 
   /*

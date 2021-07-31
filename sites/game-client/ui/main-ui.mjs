@@ -16,12 +16,17 @@ OVERLAY_DIV.set(OverlayPosition.LEFT_BOTTOM, 'overlay-bottomleft');
 OVERLAY_DIV.set(OverlayPosition.RIGHT, 'overlay-right');
 OVERLAY_DIV.set(OverlayPosition.MAIN_VIEW, 'main-view');
 
+const TOOLBAR_ID = 'toolbar';
+
 /**
- * TODO(fanlan1210)
+ * MainUI composes components into a window, 
+ * components are classified into Notification, Toolbar, Overlay and Modal.
  */
 class MainUI {
   /**
   * TODO(fanlan1210)
+  * 
+  * Create a MainUI.
   */
   constructor() {
     this.state = UIState.NORMAL_UI;
@@ -36,6 +41,8 @@ class MainUI {
     for (const [pos, div] of OVERLAY_DIV.entries()) {
       this.overlayDom[pos] = document.getElementById(div);
     }
+
+    this.toolbarDom = document.getElementById(TOOLBAR_ID);
   }
 
   /**
@@ -63,7 +70,13 @@ class MainUI {
    * @param target The element which wants add button, should be an Overlay or Modal.
    */
   addToolbarButton(target) {
-    // TODO(fanlan1210)
+    // WIP(fanlan1210)
+    target.toolbarButton = document.createElement('button');
+    // TODO: load icon asset into button
+    target.toolbarButton.innerHTML = 'Placeholder';
+    target.toolbarButton.addEventListener('click', target.onClickToolbarButton());
+
+    this.toolbarDom.appendChild(target.toolbarButton);
   }
 
   /**
@@ -71,7 +84,8 @@ class MainUI {
    * @param target The element which wants remove button, should be an Overlay or Modal.
    */
   removeToolbarButton(target) {
-    // TODO(fanlan1210)
+    // WIP(fanlan1210)
+    this.toolbarDom.removeChild(target.toolbarButton);
   }
 
   // TODO: Stack visualization? Stack height limit?
